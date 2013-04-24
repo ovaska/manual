@@ -2,15 +2,15 @@
 
 ## Getting the Code
 
-This easiest way to get a fresh copy of Lithium is by downloading an archive from our website. You can view and download versions here:
-
-	http://dev.lithify.me/lithium/versions
+This easiest way to get the latest version of Lithium is by downloading an archive from our website. Go here to [view and download versions here](https://github.com/UnionOfRAD/lithium)
 	
-Under the hood, Lithium is actually separated in two different repositories. One is called `framework` and the other one `lithium`. The `framework` repository holds everything you need to 
+##Under the Hood
+
+Lithium is actually separated in two different repositories. One is called `framework` and the other one `lithium`. The `framework` repository holds everything you need to 
 instantly bootstrap your application, while the `lithium` repository holds the Lithium core. This way you can reuse the Lithium core for other projects or just include some libraries if you 
 need them. 
 
-The repositories are hosted in GitHub, where you can also download tarballs if you just want to play around and not fetch updates through a managed repository. The normal process of fetching 
+[The repositories](https://github.com/UnionOfRAD/lithium) are hosted in GitHub, where you can also [download tarballs](https://github.com/UnionOfRAD/lithium/tarball/master) if you just want to play around and not fetch updates through a managed repository. The normal process of fetching 
 Lithium by source is to clone the `framework` repository and then install `lithium` as a submodule (which is already configured for you).
 
 	git clone git://github.com/UnionOfRAD/framework.git my_app
@@ -31,6 +31,7 @@ The two applications mentioned aren't complete copies of the Lithium codebase: t
 
 First, you'll want to create two virtual hosts for the applications on the system. Once those are in place, each application's bootstrap will need to be informed of where the Lithium libraries are. Adjust both application's `/config/bootstrap/libraries.php` file like so:
 
+_config/bootstrap/libraries.php_
 {{{
 define('LITHIUM_LIBRARY_PATH', dirname('/usr/local/lib/lithium'));
 }}}
@@ -39,10 +40,11 @@ define('LITHIUM_LIBRARY_PATH', dirname('/usr/local/lib/lithium'));
 
 For the purposes of this guide, we'll assume you're running Apache. Before starting things up, make sure mod_rewrite is enabled, and the AllowOverride directive is set to 'All' on the necessary directories involved. Be sure to restart the server before checking things.
 
-Another quick thing to check is to make sure that magic quotes have been completely disabled in your PHP installation. If you're seeing an exception error message initially, you might have magic quotes enabled. For more information on disabling this feature, see the [PHP manual](http://www.php.net/manual/en/security.magicquotes.disabling.php).
+##Another quick thing to check is to make sure that magic quotes have been completely disabled in your PHP installation.## If you're seeing an exception error message initially, you might have magic quotes enabled. For more information on disabling this feature, see the [PHP manual](http://www.php.net/manual/en/security.magicquotes.disabling.php).
 
 While you're making PHP configuration changes, you might also consider having PHP display errors temporarily during development. Just change the relevant lines in your `php.ini`:
 
+_php.ini_
 {{{
 	error_reporting  =  E_ALL
 	display_errors   =  true
@@ -57,6 +59,8 @@ At this point, you should be presented with the Li3 default home page. You're up
 Lastly, you'll want to set up the `li3` command so it's easy to use as you move around your filesystem. The `li3` command assists in tasks like code generation, documentation, and testing.
 
 To do so, add the Lithium's console library directory to your shell's path. For our example above, and assuming you're using the bash shell, you'd add something like the following to your `~/.bash_profile` file:
+
+_~/.bash_profile_
 
 	PATH=$PATH:/path/to/docroot/lithium/libraries/lithium/console
 
